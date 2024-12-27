@@ -40,6 +40,7 @@ namespace ECommerce.BL.Services.Implementations
         {
             var productEntity = await _productRepository.GetByIdAsync(id);
             _productRepository.SoftDelete(productEntity);
+            _productRepository.Update(productEntity);
             await _productRepository.Save();
             return true;
         }

@@ -1,6 +1,4 @@
-﻿using ECommerce.BL.DTOs.OrderDTOs;
-using ECommerce.BL.DTOs.OrderItemDTO;
-using ECommerce.BL.Profiles.ProductProfiles;
+﻿using ECommerce.BL.Profiles.ProductProfiles;
 using ECommerce.BL.Services.Abstractions;
 using ECommerce.BL.Services.Implementations;
 using ECommerce.Data.Repositories.Abstractions;

@@ -1,7 +1,6 @@
 using ECommerce.BL;
 using ECommerce.Data.DAL;
 using Microsoft.EntityFrameworkCore;
-
 namespace ECommerce.Api
 {
     public class Program
@@ -9,8 +8,6 @@ namespace ECommerce.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
