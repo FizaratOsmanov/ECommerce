@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ECommerce.BL.Exceptions.CommonExceptions
+﻿namespace ECommerce.BL.Exceptions.CommonExceptions
 {
     public class EntityNotFoundException:Exception
     {

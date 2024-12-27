@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.Core\\ECommerce.Core.csproj",
+      "projectUniqueName": "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.Core\\ECommerce.Core.csproj",
       "projectName": "ECommerce.Core",
-      "projectPath": "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.Core\\ECommerce.Core.csproj",
+      "projectPath": "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.Core\\ECommerce.Core.csproj",
       "packagesPath": "C:\\Users\\ca r221.14\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.Core\\obj\\",
+      "outputPath": "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

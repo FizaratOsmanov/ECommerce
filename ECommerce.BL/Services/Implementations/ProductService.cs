@@ -3,14 +3,7 @@ using ECommerce.BL.DTOs.ProductDTOs;
 using ECommerce.BL.Exceptions.CommonExceptions;
 using ECommerce.BL.Services.Abstractions;
 using ECommerce.Core.Entities;
-using ECommerce.Data.DAL;
 using ECommerce.Data.Repositories.Abstractions;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerce.BL.Services.Implementations
 {
@@ -18,19 +11,16 @@ namespace ECommerce.BL.Services.Implementations
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-
         public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
         }
-
-        public async Task<ICollection<Product>> GetAllAsync()
+        public async Task<ICollection<Product>> GetAllProductAsync()
         {
             return await _productRepository.GetAllAsync();
         }
-
-        public async Task<Product> CreateAsync(ProductCreateDTO dto)
+        public async Task<Product> CreateProductAsync(ProductCreateDTO dto)
         {
             Product createdProduct = _mapper.Map<Product>(dto);
             createdProduct.CreatedAt = DateTime.UtcNow.AddHours(4);
@@ -38,8 +28,7 @@ namespace ECommerce.BL.Services.Implementations
             await _productRepository.Save();
             return createdEntity;
         }
-
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
             if (!await _productRepository.IsExistsAsync(id))
             {
@@ -47,23 +36,21 @@ namespace ECommerce.BL.Services.Implementations
             }
             return await _productRepository.GetByIdAsync(id);
         }
-
-        public async Task<bool> SoftDeleteAsync(int id)
+        public async Task<bool> SoftDeleteProductAsync(int id)
         {
-            var productEntity = await GetByIdAsync(id);
+            var productEntity = await _productRepository.GetByIdAsync(id);
             _productRepository.SoftDelete(productEntity);
             await _productRepository.Save();
             return true;
         }
-
-        public async Task<bool> UpdateAsync(int id, DepartmentAddDTO dto)
+        public async Task<bool> UpdateProductAsync(int id, ProductCreateDTO dto)
         {
-            var departmentEntity = await GetByIdAsync(id);
-            Department updatedDepartment = _mapper.Map<Department>(dto);
-            updatedDepartment.UpdatedAt = DateTime.UtcNow.AddHours(4);
-            updatedDepartment.Id = id;
-            _departmentRepository.Update(updatedDepartment);
-            await _departmentRepository.Save();
+            var productEntity = await _productRepository.GetByIdAsync(id);
+            Product updatedProduct = _mapper.Map<Product>(dto);
+            updatedProduct.UpdatedAt = DateTime.UtcNow.AddHours(4);
+            updatedProduct.Id = id;
+            _productRepository.Update(updatedProduct);
+            await _productRepository.Save();
             return true;
         }
     }

@@ -43,15 +43,21 @@ namespace ECommerce.BL.Services.Implementations
 
         public async Task<bool> SoftDeleteOrderItemAsync(int id)
         {
-            var orderItemEntity = await GetByIdAsync(id);
+            var orderItemEntity = await _orderItemRepository.GetByIdAsync(id);
             _orderItemRepository.SoftDelete(orderItemEntity);
             await _orderItemRepository.Save();
             return true;
         }
 
-        public Task<bool> UpdateOrderItemAsync(int id, OrderItemCreateDTO dto)
+        public async Task<bool> UpdateOrderItemAsync(int id, OrderItemCreateDTO dto)
         {
-            throw new NotImplementedException();
+            var orderItemEntity = await _orderItemRepository.GetByIdAsync(id);
+            OrderItem updatedOrderItem = _mapper.Map<OrderItem>(dto);
+            updatedOrderItem.UpdatedAt = DateTime.UtcNow.AddHours(4);
+            updatedOrderItem.Id = id;
+            _orderItemRepository.Update(updatedOrderItem);
+            await _orderItemRepository.Save();
+            return true;
         }
     }
 }

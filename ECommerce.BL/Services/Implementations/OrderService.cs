@@ -1,52 +1,65 @@
 ﻿using AutoMapper;
 using ECommerce.BL.DTOs.OrderDTOs;
+using ECommerce.BL.DTOs.ProductDTOs;
+using ECommerce.BL.Exceptions.CommonExceptions;
 using ECommerce.BL.Services.Abstractions;
 using ECommerce.Core.Entities;
 using ECommerce.Data.DAL;
 using ECommerce.Data.Repositories.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerce.BL.Services.Implementations
 {
     public class OrderService : IOrderService
     {
-        private readonly AppDbContext _context;
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
 
-        public OrderService(AppDbContext context, IOrderRepository orderRepository, IMapper mapper)
+        public OrderService(IOrderRepository orderRepository, IMapper mapper)
         {
-            _context = context;
             _orderRepository = orderRepository;
             _mapper = mapper;
         }
-        public Task<Order> CreateOrderAsync(OrderCreateDTO dto)
+
+        public async Task<ICollection<Order>> GetAllOrderAsync()
         {
-            throw new NotImplementedException();
+            return await _orderRepository.GetAllAsync();
         }
 
-        public Task<ICollection<Order>> GetAllOrderAsync()
+        public async Task<Order> CreateOrderAsync(OrderCreateDTO dto)
         {
-            throw new NotImplementedException();
+            Order createdOrder = _mapper.Map<Order>(dto);
+            createdOrder.CreatedAt = DateTime.UtcNow.AddHours(4);
+            var createdEntity = await _orderRepository.CreateAsync(createdOrder);
+            await _orderRepository.Save();
+            return createdEntity;
         }
 
-        public Task<Order> GetOrderByIdAsync(int id)
+        public async Task<Order> GetOrderByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            if (!await _orderRepository.IsExistsAsync(id))
+            {
+                throw new EntityNotFoundException();
+            }
+            return await _orderRepository.GetByIdAsync(id);
         }
 
-        public Task<bool> SoftDeleteOrderAsync(int id)
+        public async Task<bool> SoftDeleteOrderAsync(int id)
         {
-            throw new NotImplementedException();
+            var orderEntity = await _orderRepository.GetByIdAsync(id);
+            _orderRepository.SoftDelete(orderEntity);
+            await _orderRepository.Save();
+            return true;
         }
 
-        public Task<bool> UpdateOrderAsync(int id, OrderCreateDTO dto)
+        public async Task<bool> UpdateOrderAsync(int id, OrderCreateDTO dto)
         {
-            throw new NotImplementedException();
+            var orderEntity = await _orderRepository.GetByIdAsync(id);
+            Order updatedOrder = _mapper.Map<Order>(dto);
+            updatedOrder.UpdatedAt = DateTime.UtcNow.AddHours(4);
+            updatedOrder.Id = id;
+            _orderRepository.Update(updatedOrder);
+            await _orderRepository.Save();
+            return true;
         }
     }
 }

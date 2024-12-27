@@ -63,6 +63,19 @@
           }
         }
       },
+      "FluentValidation/11.11.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -1081,6 +1094,31 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "FluentValidation/11.11.0": {
+      "sha512": "cyIVdQBwSipxWG8MA3Rqox7iNbUNUTK5bfJi9tIdm4CAfH71Oo5ABLP4/QyrUwuakqpUEPGtE43BDddvEehuYw==",
+      "type": "package",
+      "path": "fluentvalidation/11.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.11.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/net7.0/FluentValidation.dll",
+        "lib/net7.0/FluentValidation.xml",
+        "lib/net8.0/FluentValidation.dll",
+        "lib/net8.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -2777,7 +2815,8 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 13.0.1",
-      "ECommerce.Data >= 1.0.0"
+      "ECommerce.Data >= 1.0.0",
+      "FluentValidation >= 11.11.0"
     ]
   },
   "packageFolders": {
@@ -2787,11 +2826,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.BL\\ECommerce.BL.csproj",
+      "projectUniqueName": "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.BL\\ECommerce.BL.csproj",
       "projectName": "ECommerce.BL",
-      "projectPath": "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.BL\\ECommerce.BL.csproj",
+      "projectPath": "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.BL\\ECommerce.BL.csproj",
       "packagesPath": "C:\\Users\\ca r221.14\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.BL\\obj\\",
+      "outputPath": "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.BL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2813,8 +2852,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.Data\\ECommerce.Data.csproj": {
-              "projectPath": "C:\\Users\\ca r221.14\\source\\repos\\ECommerceApplication\\ECommerce.Data\\ECommerce.Data.csproj"
+            "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.Data\\ECommerce.Data.csproj": {
+              "projectPath": "C:\\Users\\ca r221.14\\Desktop\\ECommerceApplication\\ECommerce.Data\\ECommerce.Data.csproj"
             }
           }
         }
@@ -2837,6 +2876,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[13.0.1, )"
+          },
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[11.11.0, )"
           }
         },
         "imports": [
